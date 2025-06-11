@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentinator - Architecture</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="site-title">Documentinator</h1>
+        <button class="burger-menu" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+      <div class="sidebar">
+        <div class="sidebar-content"><ul class="nav-list">
+            <li class="nav-item">
+                <a href="/index.html" class="nav-link">Documentinator</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/architecture.html" class="nav-link">Architecture</a>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Metadata</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Metadata/config-files.html" class="nav-link">Configuration and Metadata files</a>
+            </li>
+        </ul>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Template</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Template/creating-template.html" class="nav-link">Creating Templates</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/Template/variables.html" class="nav-link">Template Variables</a>
+            </li>
+        </ul>
+            </li>
+        </ul></div>
+      </div>
+      <div class="main-content">
+        <div class="markdown-content"><h1 id="architecture">Architecture</h1>
+<p>Documentinator follows a straightforward architecture for converting markdown documentation into a static HTML site. Here&#39;s a detailed breakdown of how it works:</p>
+<h2 id="overview">Overview</h2>
+<div class="mermaid" id="mermaid-wilxsba4q">graph TD
+    subgraph "Input"
+        MD["Markdown Files"]
+        IMG["Images"]
+        CFG["config.yml"]
+        CAT["category.yml"]
+        TPL["Custom Template"]
+    end
+
+    subgraph "Processing"
+        LOAD["Load Configuration"]
+        SIDE["Build Sidebar"]
+        PROC["Process Markdown"]
+        COPY["Copy Assets"]
+
+        subgraph "Markdown Processing"
+            FRONT["Extract Frontmatter"]
+            LINKS["Transform Links"]
+            IMGS["Process Images"]
+            CODE["Syntax Highlighting"]
+            MERM["Mermaid Diagrams"]
+        end
+    end
+
+    subgraph "Output"
+        DIST["dist/ Directory"]
+        HTML["HTML Files"]
+        CSS["style.css"]
+        IMGOUT["Copied Images"]
+    end
+
+    MD --> PROC
+    IMG --> COPY
+    CFG --> LOAD
+    CAT --> SIDE
+    TPL --> PROC
+
+    PROC --> FRONT
+    FRONT --> LINKS
+    LINKS --> IMGS
+    IMGS --> CODE
+    CODE --> MERM
+
+    LOAD --> HTML
+    SIDE --> HTML
+    MERM --> HTML
+    COPY --> IMGOUT
+
+    HTML --> DIST
+    CSS --> DIST
+    IMGOUT --> DIST</div></div>
+      </div>
+    </div>
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+
+      // Toggle sidebar
+      const burgerMenu = document.querySelector(".burger-menu");
+      const sidebar = document.querySelector(".sidebar");
+      const container = document.querySelector(".container");
+
+      burgerMenu.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+        burgerMenu.classList.toggle("active");
+        container.classList.toggle("sidebar-open");
+      });
+    </script>
+  </body>
+</html>

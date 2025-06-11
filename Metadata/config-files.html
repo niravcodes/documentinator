@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentinator - Configuration and Metadata files</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="site-title">Documentinator</h1>
+        <button class="burger-menu" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+      <div class="sidebar">
+        <div class="sidebar-content"><ul class="nav-list">
+            <li class="nav-item">
+                <a href="/index.html" class="nav-link">Documentinator</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/architecture.html" class="nav-link">Architecture</a>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Metadata</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Metadata/config-files.html" class="nav-link">Configuration and Metadata files</a>
+            </li>
+        </ul>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Template</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Template/creating-template.html" class="nav-link">Creating Templates</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/Template/variables.html" class="nav-link">Template Variables</a>
+            </li>
+        </ul>
+            </li>
+        </ul></div>
+      </div>
+      <div class="main-content">
+        <div class="markdown-content"><h1 id="configuration-and-metadata-files">Configuration and Metadata files</h1>
+<p>For simplicity, all config and metadata is optional.</p>
+<h2 id="sitewide-configuration">Sitewide Configuration</h2>
+<p>The sitewide configuration can be added under <code>config.yml</code> file at the root of the <code>./docs</code>.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">siteTitle:</span> <span class="hljs-string">Project</span> <span class="hljs-string">Documentation</span></code></pre><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>siteTitle</td>
+<td>&quot;Documentation&quot;</td>
+<td>The title displayed at the top of your documentation site</td>
+</tr>
+</tbody></table>
+<h2 id="frontmatter">Frontmatter</h2>
+<p>Frontmatter can be added at the top of any markdown file to configure page-specific settings.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">Documentinator</span>
+<span class="hljs-attr">sidebarPosition:</span> <span class="hljs-number">1</span>
+<span class="hljs-meta">---</span></code></pre><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>File name</td>
+<td>The title of the page displayed in the navigation and browser tab</td>
+</tr>
+<tr>
+<td>sidebarPosition</td>
+<td>-</td>
+<td>The position of this page in the sidebar navigation (lower numbers appear first)</td>
+</tr>
+</tbody></table>
+<h2 id="category-metadata">Category Metadata</h2>
+<p>Under any category, you can create a <code>category.yml</code> file to configure category-specific settings.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">label:</span> <span class="hljs-string">&quot;Category Name&quot;</span>
+<span class="hljs-attr">position:</span> <span class="hljs-number">3</span></code></pre><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>label</td>
+<td>Directory name</td>
+<td>The display name for the category in the sidebar</td>
+</tr>
+<tr>
+<td>position</td>
+<td>-</td>
+<td>The position of this category in the sidebar (lower numbers appear first)</td>
+</tr>
+</tbody></table>
+<h2 id="example-folder-structure">Example Folder Structure</h2>
+<pre><code class="hljs">docs<span class="hljs-symbol">/</span>
+├── config.yml                 <span class="hljs-comment"># Sitewide configuration</span>
+├── getting-started<span class="hljs-symbol">/</span>
+│   ├── category.yml          <span class="hljs-comment"># Category metadata</span>
+│   ├── installation.md       <span class="hljs-comment"># Page with frontmatter</span>
+│   └── configuration.md      <span class="hljs-comment"># Page with frontmatter</span>
+├── api<span class="hljs-symbol">/</span>
+│   ├── category.yml
+│   └── endpoints.md
+└── tutorials<span class="hljs-symbol">/</span>
+    ├── category.yml
+    ├── basic-usage.md
+    └── advanced-features.md</code></pre></div>
+      </div>
+    </div>
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+
+      // Toggle sidebar
+      const burgerMenu = document.querySelector(".burger-menu");
+      const sidebar = document.querySelector(".sidebar");
+      const container = document.querySelector(".container");
+
+      burgerMenu.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+        burgerMenu.classList.toggle("active");
+        container.classList.toggle("sidebar-open");
+      });
+    </script>
+  </body>
+</html>

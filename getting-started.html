@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Niravko - Getting Started</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="site-title">Niravko</h1>
+        <button class="burger-menu" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+      <div class="sidebar">
+        <div class="sidebar-content"><ul class="nav-list">
+            <li class="nav-item">
+                <a href="/getting-started.html" class="nav-link">Getting Started</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/index.html" class="nav-link">Documentator</a>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Dingusland</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Dingusland/markdown-extensions.html" class="nav-link">Markdown Extensions</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/Dingusland/configuration.html" class="nav-link">Configuration</a>
+            </li>
+        </ul>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Extras</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Advanced/configuration.html" class="nav-link">Configuration</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/Advanced/markdown-extensions.html" class="nav-link">Markdown Extensions</a>
+            </li>
+        </ul>
+            </li>
+        </ul></div>
+      </div>
+      <div class="main-content">
+        <div class="markdown-content"><h1 id="getting-started">Getting Started</h1>
+<h2 id="installation">Installation</h2>
+<p>Install the package globally using npm:</p>
+<pre><code class="hljs language-bash">npm install -g documentator</code></pre><h2 id="basic-usage">Basic Usage</h2>
+<ol>
+<li>Create a <code>docs</code> folder in your project</li>
+<li>Add markdown files to it</li>
+<li>Run one of these commands:</li>
+</ol>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Build static HTML</span>
+documentator build ./docs
+
+<span class="hljs-comment"># Serve with live reload</span>
+documentator serve ./docs</code></pre><h2 id="markdown-features">Markdown Features</h2>
+<h3 id="code-blocks">Code Blocks</h3>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> hello = <span class="hljs-string">&quot;world&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hello);</code></pre><h3 id="mermaid-diagrams">Mermaid Diagrams</h3>
+<p>You can create diagrams using Mermaid syntax:</p>
+<div class="mermaid" id="mermaid-g4gzuxj1c">graph TD
+    A[Write Markdown] -->|documentator build| B[Generate HTML]
+    B --> C[View Docs]
+    A -->|documentator serve| D[Dev Server]
+    D --> C</div><h3 id="images">Images</h3>
+<p>Images in your docs folder are automatically copied to the output. Use relative paths:</p>
+<pre><code class="hljs language-markdown">![<span class="hljs-string">My Image</span>](<span class="hljs-link">./images/example.png</span>)</code></pre></div>
+      </div>
+    </div>
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+
+      // Toggle sidebar
+      const burgerMenu = document.querySelector(".burger-menu");
+      const sidebar = document.querySelector(".sidebar");
+      const container = document.querySelector(".container");
+
+      burgerMenu.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+        burgerMenu.classList.toggle("active");
+        container.classList.toggle("sidebar-open");
+      });
+    </script>
+  </body>
+</html>

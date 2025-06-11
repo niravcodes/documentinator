@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Niravko - Markdown Extensions</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="site-title">Niravko</h1>
+        <button class="burger-menu" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+      <div class="sidebar">
+        <div class="sidebar-content"><ul class="nav-list">
+            <li class="nav-item">
+                <a href="/getting-started.html" class="nav-link">Getting Started</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/index.html" class="nav-link">Documentator</a>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Dingusland</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Dingusland/markdown-extensions.html" class="nav-link">Markdown Extensions</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/Dingusland/configuration.html" class="nav-link">Configuration</a>
+            </li>
+        </ul>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Extras</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Advanced/configuration.html" class="nav-link">Configuration</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/Advanced/markdown-extensions.html" class="nav-link">Markdown Extensions</a>
+            </li>
+        </ul>
+            </li>
+        </ul></div>
+      </div>
+      <div class="main-content">
+        <div class="markdown-content"><h1 id="markdown-extensions">Markdown Extensions</h1>
+<h2 id="mermaid-diagrams">Mermaid Diagrams</h2>
+<p>Documentator supports Mermaid diagrams out of the box. Use the <code>mermaid</code> code fence:</p>
+<div class="mermaid" id="mermaid-churl7jjn">sequenceDiagram
+    participant User
+    participant Docs
+    participant HTML
+
+    User->>Docs: Write markdown
+    Docs->>HTML: Convert
+    HTML-->>User: View</div><h2 id="code-highlighting">Code Highlighting</h2>
+<p>Code blocks are automatically highlighted:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">hello_world</span>():
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello from Python!&quot;</span>)</code></pre><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">hello</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello from JavaScript!&quot;</span>);
+}</code></pre><h2 id="tables">Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mermaid</td>
+<td>Create diagrams</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>Syntax highlighting</td>
+</tr>
+<tr>
+<td>Tables</td>
+<td>Markdown tables</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>Local images support</td>
+</tr>
+</tbody></table>
+<h2 id="task-lists">Task Lists</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Basic markdown</li>
+<li><input checked="" disabled="" type="checkbox"> Code highlighting</li>
+<li><input checked="" disabled="" type="checkbox"> Mermaid diagrams</li>
+<li><input disabled="" type="checkbox"> Math equations (coming soon)</li>
+<li><input disabled="" type="checkbox"> Interactive components</li>
+</ul>
+</div>
+      </div>
+    </div>
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+
+      // Toggle sidebar
+      const burgerMenu = document.querySelector(".burger-menu");
+      const sidebar = document.querySelector(".sidebar");
+      const container = document.querySelector(".container");
+
+      burgerMenu.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+        burgerMenu.classList.toggle("active");
+        container.classList.toggle("sidebar-open");
+      });
+    </script>
+  </body>
+</html>

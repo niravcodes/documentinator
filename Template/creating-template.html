@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentinator - Creating Templates</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="site-title">Documentinator</h1>
+        <button class="burger-menu" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+      <div class="sidebar">
+        <div class="sidebar-content"><ul class="nav-list">
+            <li class="nav-item">
+                <a href="/index.html" class="nav-link">Documentinator</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/architecture.html" class="nav-link">Architecture</a>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Metadata</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Metadata/config-files.html" class="nav-link">Configuration and Metadata files</a>
+            </li>
+        </ul>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Template</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Template/creating-template.html" class="nav-link">Creating Templates</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/Template/variables.html" class="nav-link">Template Variables</a>
+            </li>
+        </ul>
+            </li>
+        </ul></div>
+      </div>
+      <div class="main-content">
+        <div class="markdown-content"><h1 id="creating-templates">Creating Templates</h1>
+<p>If you need a custom template for your documentation, create a new <code>template</code> folder inside docs directory.
+There, you can add index.html and any supporting files.</p>
+<p>The following variables are available for use in your templates:</p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Description</th>
+<th>Example Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>siteTitle</code></td>
+<td>The main title of the site. Used in both the page title and header.</td>
+<td><code>&lt;title&gt;{{siteTitle}}&lt;/title&gt;</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>The page-specific title (optional). When present, it&#39;s appended to the site title with a separator.</td>
+<td><code>{{#title}} - {{title}}{{/title}}</code></td>
+</tr>
+<tr>
+<td><code>sidebar</code></td>
+<td>The sidebar content. Uses triple braces to allow HTML content.</td>
+<td><code>{{{sidebar}}}</code></td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td>The main page content. Uses triple braces to allow HTML/markdown rendered content.</td>
+<td><code>{{{content}}}</code></td>
+</tr>
+</tbody></table>
+<h2 id="usage-notes">Usage Notes</h2>
+<ul>
+<li>Variables wrapped in double braces (<code>{{variable}}</code>) will have HTML characters escaped</li>
+<li>Variables wrapped in triple braces (<code>{{{variable}}}</code>) will not have HTML escaped, allowing for HTML content to be rendered</li>
+<li>The <code>title</code> variable is optional and will only appear in the page title when present</li>
+</ul>
+</div>
+      </div>
+    </div>
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+
+      // Toggle sidebar
+      const burgerMenu = document.querySelector(".burger-menu");
+      const sidebar = document.querySelector(".sidebar");
+      const container = document.querySelector(".container");
+
+      burgerMenu.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+        burgerMenu.classList.toggle("active");
+        container.classList.toggle("sidebar-open");
+      });
+    </script>
+  </body>
+</html>

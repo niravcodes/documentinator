@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentinator - Documentinator</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="site-title">Documentinator</h1>
+        <button class="burger-menu" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+      <div class="sidebar">
+        <div class="sidebar-content"><ul class="nav-list">
+            <li class="nav-item">
+                <a href="/index.html" class="nav-link">Documentinator</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/architecture.html" class="nav-link">Architecture</a>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Metadata</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Metadata/config-files.html" class="nav-link">Configuration and Metadata files</a>
+            </li>
+        </ul>
+            </li>
+        
+            <li class="nav-item">
+                <span class="nav-folder">Template</span>
+                <ul class="nav-list">
+            <li class="nav-item">
+                <a href="/Template/creating-template.html" class="nav-link">Creating Templates</a>
+            </li>
+        
+            <li class="nav-item">
+                <a href="/Template/variables.html" class="nav-link">Template Variables</a>
+            </li>
+        </ul>
+            </li>
+        </ul></div>
+      </div>
+      <div class="main-content">
+        <div class="markdown-content"><h1 id="documentinator">Documentinator</h1>
+<p><em>Behold, the Document-inator!</em> A simple documentation builder.</p>
+<p>Every project should have notes/docs folder in it&#39;s source code.
+Helps with formulating thoughts, keeping TODOs,
+recording decisions and, increasingly these days, aiding LLMs. That notes/docs folder
+should be committed to git just like code.</p>
+<p>Markdown is great for noting down programmer-thought, and it plays well with version control.
+But it is not too pretty to look at all the time.</p>
+<p>This simple tool will serve your folder of markdown notes as HTML in the browser.
+It supports nested folders and files. You can include local images and local markdown.
+Use mermaid diagrams too.</p>
+<h2 id="ideal-usage">Ideal usage</h2>
+<p>Ideally, you&#39;ll create a <code>docs</code> folder in your code repo. Maybe something like this:</p>
+<pre><code class="hljs">your-project<span class="hljs-symbol">/</span>
+├── docs<span class="hljs-symbol">/</span>           <span class="hljs-comment"># create this folder here</span>
+├── frontend<span class="hljs-symbol">/</span>
+├── backend<span class="hljs-symbol">/</span>
+├── package.json
+└── .env</code></pre><p>The docs folder can have images, markdown and you can have folders.</p>
+<pre><code class="hljs">docs<span class="hljs-symbol">/</span>
+├── index.md
+├── logo.png
+├── frontend<span class="hljs-symbol">/</span>       <span class="hljs-comment"># here some info files about frontend</span>
+├── deployment<span class="hljs-symbol">/</span>     <span class="hljs-comment"># deployment info and commands</span>
+└── ADRs<span class="hljs-symbol">/</span>          <span class="hljs-comment"># your architecture design decisions</span></code></pre></div>
+      </div>
+    </div>
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+
+      // Toggle sidebar
+      const burgerMenu = document.querySelector(".burger-menu");
+      const sidebar = document.querySelector(".sidebar");
+      const container = document.querySelector(".container");
+
+      burgerMenu.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+        burgerMenu.classList.toggle("active");
+        container.classList.toggle("sidebar-open");
+      });
+    </script>
+  </body>
+</html>
