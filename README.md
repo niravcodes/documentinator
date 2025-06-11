@@ -39,6 +39,7 @@ The built HTML goes to ./dist folder.
 ## Directory Structure
 
 > **Note**
+
   Template is optional. A sensible template has already been included.
 
 ```
