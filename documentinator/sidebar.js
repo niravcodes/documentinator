@@ -4,7 +4,11 @@ const matter = require("gray-matter");
 const { getDirMetadata } = require("./config");
 const { extractTitle } = require("./markdown");
 
-async function buildSidebar(docsDir, currentPath = "") {
+async function buildSidebar(
+  docsDir,
+  currentPath = "",
+  config = { baseURL: "/" }
+) {
   let html = '<ul class="nav-list">';
   const entries = await fs.readdir(path.join(docsDir, currentPath), {
     withFileTypes: true,
@@ -69,12 +73,14 @@ async function buildSidebar(docsDir, currentPath = "") {
       html += `
             <li class="nav-item">
                 <span class="nav-folder">${entry.label}</span>
-                ${await buildSidebar(docsDir, entry.relativePath)}
+                ${await buildSidebar(docsDir, entry.relativePath, config)}
             </li>
         `;
     } else {
-      const urlPath =
-        "/" + path.join(currentPath, entry.name).replace(/\.md$/, ".html");
+      const urlPath = path
+        .join(config.baseURL, currentPath, entry.name)
+        .replace(/\.md$/, ".html")
+        .replace(/\\/g, "/");
       html += `
             <li class="nav-item">
                 <a href="${urlPath}" class="nav-link">${entry.title}</a>

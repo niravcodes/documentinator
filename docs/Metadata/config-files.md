@@ -8,11 +8,13 @@ The sitewide configuration can be added under `config.yml` file at the root of t
 
 ```yaml
 siteTitle: Project Documentation
+baseURL: "/docs"
 ```
 
 | Property  | Default         | Description                                               |
 | --------- | --------------- | --------------------------------------------------------- |
 | siteTitle | "Documentation" | The title displayed at the top of your documentation site |
+| baseURL   | "/"             | The base URL path where your documentation will be hosted |
 
 ## Frontmatter
 

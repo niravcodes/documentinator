@@ -42,7 +42,7 @@ function copyImageSync(imagePath, docsDir, currentDir) {
 }
 
 // Transform markdown links to HTML links
-function transformLink(href, currentDir) {
+function transformLink(href, currentDir, baseURL = "/") {
   if (href.startsWith("http")) {
     return href;
   }
@@ -53,17 +53,28 @@ function transformLink(href, currentDir) {
     .replace(/\.md$/, ".html")
     .replace(/\\/g, "/"); // Convert Windows paths to URL paths
 
-  return normalizedPath.startsWith("/") ? normalizedPath : "/" + normalizedPath;
+  const pathWithBase = path
+    .join(
+      baseURL,
+      normalizedPath.startsWith("/") ? normalizedPath.slice(1) : normalizedPath
+    )
+    .replace(/\\/g, "/"); // Convert Windows paths to URL paths
+  return pathWithBase;
 }
 
 // Process markdown content
-async function processMarkdown(content, docsDir, currentDir) {
+async function processMarkdown(
+  content,
+  docsDir,
+  currentDir,
+  config = { baseURL: "/" }
+) {
   const { content: markdownContent } = matter(content);
 
   const renderer = new marked.Renderer();
 
   renderer.link = (href, title, text) => {
-    const newHref = transformLink(href, currentDir);
+    const newHref = transformLink(href, currentDir, config.baseURL);
     return `<a href="${newHref}"${
       title ? ` title="${title}"` : ""
     }>${text}</a>`;
@@ -77,7 +88,8 @@ async function processMarkdown(content, docsDir, currentDir) {
     }
 
     const newPath = copyImageSync(href, docsDir, currentDir);
-    return `<img src="/${newPath}" alt="${text}"${
+    const imagePath = path.join(config.baseURL, newPath).replace(/\\/g, "/");
+    return `<img src="${imagePath}" alt="${text}"${
       title ? ` title="${title}"` : ""
     }>`;
   };

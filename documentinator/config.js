@@ -5,6 +5,7 @@ const yaml = require("js-yaml");
 // Default configuration
 const defaultConfig = {
   siteTitle: "Documentation",
+  baseURL: "",
 };
 
 // Load configuration from config.yml if it exists

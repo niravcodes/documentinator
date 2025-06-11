@@ -1,6 +1,6 @@
 {
   "name": "documentinator",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "markdown documentation HTMLifier",
   "main": "documentinator/index.js",
   "repository": {
@@ -22,7 +22,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [
     "documentation",
@@ -40,5 +41,8 @@
     "js-yaml": "^4.1.0",
     "marked": "^4.0.0",
     "mustache": "^4.2.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }

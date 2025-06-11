@@ -27,7 +27,7 @@ async function buildDocs(docsDir) {
   const template = await fs.readFile(templatePath, "utf-8");
 
   // Build sidebar once
-  const sidebar = await buildSidebar(docsDir);
+  const sidebar = await buildSidebar(docsDir, "", config);
 
   // Create dist directory
   await fs.mkdir("dist", { recursive: true });
@@ -61,7 +61,8 @@ async function buildDocs(docsDir) {
         const htmlContent = await processMarkdown(
           content,
           docsDir,
-          path.dirname(relativePath)
+          path.dirname(relativePath),
+          config
         );
 
         // Use frontmatter title, h1 title, or filename
@@ -73,6 +74,7 @@ async function buildDocs(docsDir) {
           content: htmlContent,
           sidebar,
           siteTitle: config.siteTitle,
+          baseURL: config.baseURL,
           ...frontmatter,
         });
 
