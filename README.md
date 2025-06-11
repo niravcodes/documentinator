@@ -14,6 +14,8 @@ This simple tool will serve your folder of markdown notes as HTML in the browser
 It supports nested folders and files. You can include local images and local markdown.
 Use mermaid diagrams too.
 
+![Documentinator Screenshot](./screenshot.png)
+
 ## Usage
 
 Documentinator provides two main commands:
