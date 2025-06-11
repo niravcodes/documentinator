@@ -1,0 +1,44 @@
+{
+  "name": "documentinator",
+  "version": "2.3.0",
+  "description": "markdown documentation HTMLifier",
+  "main": "documentinator/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niravcodes/documentinator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/niravcodes/documentinator/issues"
+  },
+  "homepage": "https://github.com/niravcodes/documentinator#readme",
+  "bin": {
+    "documentinator": "documentinator/cli.js"
+  },
+  "files": [
+    "documentinator",
+    "template"
+  ],
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "documentation",
+    "markdown",
+    "static-site",
+    "docs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^3.5.2",
+    "express": "^4.17.1",
+    "gray-matter": "^4.0.0",
+    "highlight.js": "^11.11.1",
+    "js-yaml": "^4.1.0",
+    "marked": "^4.0.0",
+    "mustache": "^4.2.0"
+  }
+}
